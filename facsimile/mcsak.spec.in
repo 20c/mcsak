@@ -1,0 +1,44 @@
+
+################################################################################
+
+Summary: MultiCast Swiss Army Knife
+Name: mcsak
+Version: @PACKAGE_VERSION@
+Release: 0%{?dist}
+License: ASL 2.0
+Group: Applications/Internet
+URL: no
+Source: http://booty/mcsak-%{version}.tar.bz2
+BuildRoot: %{_tmppath}/%{name}-%{version}-root
+Provides: mcsak
+
+################################################################################
+
+%description
+
+mcsak is a simple utility to join multicast groups and capture messages sent.  
+It does simple decoding and gap alerting for message formats that contain
+sequence numbers.
+
+
+%prep
+%setup -q
+
+%build
+%configure
+make %{?_smp_mflags}
+
+%install
+%make_install
+
+%files
+%{_bindir}/mcsak
+
+################################################################################
+
+
+%changelog
+
+* Fri Dec 28 2012 Matt Griswold <grizz@dipd.com>
+- initial create
+

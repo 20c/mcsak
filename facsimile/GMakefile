@@ -1,0 +1,9 @@
+
+MCSAK_VERSION=`cat config/VERSION`
+
+mcsak: src/mcsak.c
+	echo $(MCSAK_VERSION)
+	$(CC) -Wall $^ -o $@ -lrt
+
+clean:
+	rm -f mcsak
